@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheti Chand Blessings - Jhulelal</title>
+    <style>
+        /* Modern Background */
+        body {
+            background: radial-gradient(circle, #1a237e, #0b3d91, #000080);
+            color: white;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            margin-top: 5vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 0px 0px 15px gold;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        img {
+            width: 60%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.8);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.5); }
+            100% { box-shadow: 0px 0px 25px rgba(255, 215, 0, 1); }
+        }
+
+        input, button {
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            background: #f9f871;
+            border: 2px solid gold;
+        }
+
+        button {
+            background: gold;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0px 0px 15px gold;
+        }
+
+        button:hover {
+            background: #ffd700;
+            box-shadow: 0px 0px 25px gold;
+        }
+
+        #blessings {
+            margin-top: 20px;
+            font-size: 22px;
+            color: yellow;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: explode 1s linear infinite;
+        }
+
+        @keyframes explode {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(3); opacity: 0; }
+        }
+
+        /* Sindhi Calendar */
+        #calendar {
+            margin-top: 10px;
+            font-size: 18px;
+            color: lightyellow;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🙏 Jai Jhulelal! 🙏</h1>
+        <p>Enter your name to receive blessings from Jhulelal Bhagwan:</p>
+        <input type="text" id="nameInput" placeholder="Your Name">
+        <button onclick="showBlessings()">Get Blessings</button>
+        <p id="blessings"></p>
+        <img src="jhulelal.png.png" alt="Jhulelal Bhagwan">
+        <p id="calendar"></p>
+    </div>
+
+    <!-- Background Bhajan Music -->
+    <audio autoplay loop>
+        <source src="SONG.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function showBlessings() {
+            let name = document.getElementById("nameInput").value;
+            if (name.trim() === "") {
+                alert("Please enter your name!");
+                return;
+            }
+            document.getElementById("blessings").innerHTML = `🌊✨ Jhulelal Bhagwan blesses you, <b>${name}</b>! ✨🌊`;
+            document.getElementById("blessings").style.opacity = "1";
+            createFireworks();
+        }
+
+        function createFireworks() {
+            for (let i = 0; i < 15; i++) {
+                let firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.top = Math.random() * window.innerHeight + "px";
+                firework.style.left = Math.random() * window.innerWidth + "px";
+                firework.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`; // Random colors
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1500);
+            }
+        }
+
+        // Sindhi Calendar
+        let today = new Date();
+        let chetiChandDate = "30 March 2025";  // Update if needed
+        document.getElementById("calendar").innerText = `📆 Today is Cheti Chand: ${chetiChandDate}`;
+    </script>
+</body>
+</html>
